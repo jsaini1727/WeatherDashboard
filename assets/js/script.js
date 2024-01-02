@@ -59,10 +59,12 @@ function getSearchHistory() {
 // Function to save the new city searched into the local storage and update the local storage
 function saveSearchHistory() {
     var history = getSearchHistory();
-    var rawDataHistory = JSON.stringify(history);
+  
+  
     if (!history.includes(city)) {
         history.push(city);
-        localStorage.setItem('search-history', rawDataHistory);
+        console.log(city, history)
+        localStorage.setItem('search-history', JSON.stringify(history));
     }
 }
 
@@ -72,4 +74,5 @@ searchBtn.click(function () {
     city = searchInput.val();
     getCurrentForecast();
     getForecast();
+    saveSearchHistory();
 });
