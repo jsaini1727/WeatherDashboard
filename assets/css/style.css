@@ -1,0 +1,29 @@
+header {
+    font-size: x-large;
+    text-align: center;
+    background-color: deepskyblue;
+    margin: 0;
+}
+
+.weather-section{
+    display: flex;
+}
+.weather{
+    justify-content: center;
+}
+.weatherForecast{
+    margin: 10px;
+    border: 2px solid red;
+    background-color: aquamarine;
+    padding: 5px;
+    height: 150px;
+    width: 150px;
+    justify-content: center;
+}
+#forecast {
+    display: flex;
+}
+
+#forecast td {
+    display: block;
+}

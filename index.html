@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h1>WEATHER DASHBOARD</h1>
+    </header>
+    <div class="weather-section">
+        <section>
+            <input id="search-text" type="text" placeholder="Please enter a city name">
+            <button id="search-btn">Search</button>
+            <h3 class="history">Search History</h3>
+        </section>
+        <div class="weather">
+            <section>
+                <section id="current-condition">
+                    <h2>Current Condition</h2>
+                    <p id="current-humidity">Humidity</p>
+                    <p id="current-temperature">Temperature</p>
+                    <p id="current-windspeed">Wind Speed</p>
+                </section>
+                <div class="future-forecast">
+                    <h2> 5 Day Forecast</h2>
+                    <table id="forecast"></table>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
