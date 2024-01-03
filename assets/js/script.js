@@ -59,15 +59,26 @@ function getSearchHistory() {
 // Function to save the new city searched into the local storage and update the local storage
 function saveSearchHistory() {
     var history = getSearchHistory();
-  
-  
     if (!history.includes(city)) {
         history.push(city);
-        console.log(city, history)
         localStorage.setItem('search-history', JSON.stringify(history));
     }
 }
+// Function to update the search history with the list using the local storage
+function searchHistoryOutput() {
+    var citySearched = localStorage.getItem('search-history');
+    if (citySearched) {
+        var cities = JSON.parse(citySearched);
+        var historyOutput = document.querySelector("#history-output");
+        cities.forEach(function (citySearched) {
+            var button = document.createElement("button");
+            button.textContent = citySearched;
+            historyOutput.appendChild(button);
+        })
+    }
 
+}
+searchHistoryOutput();
 
 
 searchBtn.click(function () {
@@ -76,3 +87,4 @@ searchBtn.click(function () {
     getForecast();
     saveSearchHistory();
 });
+
