@@ -27,3 +27,10 @@ header {
 #forecast td {
     display: block;
 }
+#history-output{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+   justify-content: space-between;
+   gap: 10px;
+}
