@@ -88,3 +88,10 @@ searchBtn.click(function () {
     saveSearchHistory();
 });
 
+$('#history-output').on('click', 'button', function () {
+    city = $(this).text()
+    getCurrentForecast();
+    getForecast();
+
+    
+});
