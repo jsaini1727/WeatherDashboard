@@ -9,7 +9,7 @@ I had a sense of achievement after completing the 'Weather Dashboard'. I was not
 
 ## Repository
 ```
-https://jsaini1727.github.io/WeatherDashboard/
+https://github.com/jsaini1727/WeatherDashboard
 
 ```
 
@@ -26,4 +26,4 @@ https://jsaini1727.github.io/WeatherDashboard/
 ```
 ## Screenshot Of Live Webpage
 
-<img src="./assets/images/Screenshot WeatherDashboard.png>
+<img src="./assets/images/Screenshot.png">

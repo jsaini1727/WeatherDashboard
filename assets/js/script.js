@@ -8,12 +8,16 @@ function getCurrentForecast() {
     var currentForecast = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
     $.get(currentForecast)
         .then(function (data) {
+            var currentDate = data.dt_txt;
+            var convertCurrentDate = dayjs(currentDate).format("MM/DD/YYYY");
             var currentHumidity = data.main.humidity;
             var currentTemperature = data.main.temp;
             var currentWindSpeed = data.wind.speed;
+            $('#current-date').text("Date: " + convertCurrentDate);
             $('#current-humidity').text("Humidity: " + currentHumidity + " %");
             $('#current-temperature').text("Temperature: " + currentTemperature + " ℉");
             $('#current-windspeed').text("Wind Speed: " + currentWindSpeed + " mph")
+            console.log(weatherIcon);
         })
 }
 
@@ -93,5 +97,5 @@ $('#history-output').on('click', 'button', function () {
     getCurrentForecast();
     getForecast();
 
-    
+
 });
