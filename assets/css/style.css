@@ -23,6 +23,10 @@ header {
 #forecast {
     display: flex;
 }
+.text-center {
+    display: flex;
+    justify-content: center;
+}
 
 #forecast td {
     display: block;
