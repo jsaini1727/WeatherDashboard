@@ -9,16 +9,17 @@ function getCurrentForecast() {
     var currentForecast = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
     $.get(currentForecast)
         .then(function (data) {
-            console.log(data);
+            var icon = data.weather[0].icon;
             var currentDate = data.dt;
             var currentHumidity = data.main.humidity;
             var currentTemperature = data.main.temp;
             var currentWindSpeed = data.wind.speed;
             if (!city == []) {
-                cityDate.text(`${city}, ${dayjs(currentDate).format('MMMM, DD, YYYY')}`)
+                cityDate.text(`${city}, ${dayjs.unix(currentDate).format('MMMM, DD, YYYY')}`)
             } else {
-                cityDate.text(`Location, ${dayjs(currentDate).format('MM, DD, YYYY')}`)
+                cityDate.text(`Location, ${dayjs.unix(currentDate).format('MMMM,DD, YYYY')}`)
             }
+            $('#weather-icon').attr('src', `https://openweathermap.org/img/wn/${icon}.png`);
             $('#current-humidity').text("Humidity: " + currentHumidity + " %");
             $('#current-temperature').text("Temperature: " + currentTemperature + " ℉");
             $('#current-windspeed').text("Wind Speed: " + currentWindSpeed + " mph")
@@ -41,6 +42,7 @@ function getForecast() {
                 if (blockObj.dt_txt.includes('12:00')) {
                     var date = blockObj.dt_txt
                     var convertDate = dayjs(date).format("MM/DD/YYYY");
+                    var icon = blockObj.weather[0].icon
                     var humidity = blockObj.main.humidity;
                     var temperature = blockObj.main.temp;
                     var windSpeed = blockObj.wind.speed;
@@ -48,8 +50,9 @@ function getForecast() {
                     $('#humidity').text("Humidity: " + humidity + " %");
                     $('#temperature').text("Temperature: " + temperature);
                     $('#wind_speed').text("Wind Speed: " + windSpeed);
-
+                    $('#icon').attr('src', `https://openweathermap.org/img/wn/${icon[i]}.png`);
                     var newRow = $('<tr class=weatherForecast>');
+                    newRow.append($('<td>').append($('<img>').attr('src', `https://openweathermap.org/img/wn/${icon}.png`)));
                     newRow.append($('<td>').text("Date: " + convertDate));
                     newRow.append($('<td>').text("Humidity: " + humidity + " %"));
                     newRow.append($('<td>').text("Temperature: " + temperature + " ℉"));
