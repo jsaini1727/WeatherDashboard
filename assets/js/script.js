@@ -3,6 +3,7 @@ var searchBtn = $('#search-btn');
 var apiKey = '0ea7d7cb0bccf9d8193db521824c2fad';
 var cityDate = $('#city-date-title')
 var city = searchInput.val();
+console.log(city);
 
 // This function brings the current weather from the weather API
 function getCurrentForecast() {
@@ -22,7 +23,7 @@ function getCurrentForecast() {
             } else {
                 cityDate.text(`Location, ${dayjs.unix(currentDate).format('MMMM,DD, YYYY')}`)
             }
-            $('#weather-icon').attr('src', `https://openweathermap.org/img/wn/${icon}.png`);
+            $('#weather-icon').attr('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
             $('#current-humidity').text("Humidity: " + currentHumidity + " %");
             $('#current-temperature').text("Temperature: " + currentTemperature + " ℉");
             $('#current-windspeed').text("Wind Speed: " + currentWindSpeed + " mph")
@@ -85,6 +86,8 @@ function saveSearchHistory() {
     if (!lowerCased.includes(city)) {
         history.push(city);
         localStorage.setItem('search-history', JSON.stringify(history));
+        searchHistoryOutput();
+
     }
 }
 // Function to update the search history with the list using the local storage
@@ -93,6 +96,7 @@ function searchHistoryOutput() {
     if (citySearched) {
         var cities = JSON.parse(citySearched);
         var historyOutput = document.querySelector("#history-output");
+        historyOutput.innerHTML="";
         cities.forEach(function (citySearched) {
             var button = document.createElement("button");
             button.textContent = citySearched;
@@ -106,7 +110,8 @@ searchHistoryOutput();
 
 searchBtn.click(function () {
     city = searchInput.val();
-    getCurrentForecast();
+    searchInput.val("");
+    getCurrentForecast(city);
     getForecast();
     saveSearchHistory();
 });
