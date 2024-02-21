@@ -26,4 +26,4 @@ https://jsaini1727.github.io/WeatherDashboard/
 ```
 ## Screenshot Of Live Webpage
 
-<img src="./assets/images/Screenshot.png">
+<img src="./assets/images/WeatherDashboard.png">
