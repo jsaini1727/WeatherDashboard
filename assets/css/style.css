@@ -8,14 +8,15 @@ header {
     margin: 0;
 }
 
-.weather-section{
+.weather-section {
     display: flex;
 }
 .weather{
     margin-left: 35px;
     justify-content: center;
 }
-.weatherForecast{
+
+.weatherForecast {
     margin: 10px;
     border: 2px solid red;
     background-color: aquamarine;
@@ -24,22 +25,24 @@ header {
     width: 150px;
     justify-content: center;
 }
+
 #forecast {
     display: flex;
 }
+
 .text-center {
     display: flex;
     justify-content: center;
 }
 
 #forecast td {
-    display: flex;
-    
+    display: block;
 }
-#history-output{
+
+#history-output {
     display: flex;
     flex-direction: column;
     padding: 5px;
-   justify-content: space-between;
-   gap: 10px;
+    justify-content: space-between;
+    gap: 10px;
 }

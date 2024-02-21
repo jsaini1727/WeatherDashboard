@@ -7,14 +7,17 @@ var city = searchInput.val();
 // This function brings the current weather from the weather API
 function getCurrentForecast() {
     var currentForecast = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+
     $.get(currentForecast)
         .then(function (data) {
-            var icon = data.weather[0].icon;
+     
             var currentDate = data.dt;
             var currentHumidity = data.main.humidity;
             var currentTemperature = data.main.temp;
             var currentWindSpeed = data.wind.speed;
+
             if (!city == []) {
+                cityDate.text(`${city}, ${dayjs.unix(currentDate).format('MMMM, DD, YYYY')}`)
                 cityDate.text(`${city}, ${dayjs.unix(currentDate).format('MMMM, DD, YYYY')}`)
             } else {
                 cityDate.text(`Location, ${dayjs.unix(currentDate).format('MMMM,DD, YYYY')}`)
@@ -36,6 +39,7 @@ function getForecast() {
     }
     $.get(forecastURL)
         .then(function (data) {
+            console.log(data);
             var blocks = data.list;
             for (var i = 0; i < blocks.length; i++) {
                 var blockObj = blocks[i];
@@ -46,6 +50,7 @@ function getForecast() {
                     var humidity = blockObj.main.humidity;
                     var temperature = blockObj.main.temp;
                     var windSpeed = blockObj.wind.speed;
+                    $('#icon').attr('src', `https://openweathermap.org/img/wn/${icon[i]}.png`);
                     $('#date').text("Date: " + convertDate);
                     $('#humidity').text("Humidity: " + humidity + " %");
                     $('#temperature').text("Temperature: " + temperature);
