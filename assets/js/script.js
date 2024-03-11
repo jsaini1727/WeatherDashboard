@@ -8,6 +8,7 @@ console.log(city);
 // This function brings the current weather from the weather API
 function getCurrentForecast() {
     var currentForecast = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+    var formatCity = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase()
 
     $.get(currentForecast)
         .then(function (data) {
@@ -18,8 +19,8 @@ function getCurrentForecast() {
             var currentWindSpeed = data.wind.speed;
 
             if (!city == []) {
-                cityDate.text(`${city}, ${dayjs.unix(currentDate).format('MMMM, DD, YYYY')}`)
-                cityDate.text(`${city}, ${dayjs.unix(currentDate).format('MMMM, DD, YYYY')}`)
+                cityDate.text(`${formatCity} - ${dayjs.unix(currentDate).format('MMMM, DD, YYYY')}`)
+                // cityDate.text(`${city}, ${dayjs.unix(currentDate).format('MMMM, DD, YYYY')}`)
             } else {
                 cityDate.text(`Location, ${dayjs.unix(currentDate).format('MMMM,DD, YYYY')}`)
             }
@@ -80,11 +81,12 @@ function getSearchHistory() {
 // Function to save the new city searched into the local storage and update the local storage but saving only once even if there is a difference in the case .
 function saveSearchHistory() {
     var history = getSearchHistory();
-    var lowerCased = history.map(function (city) {
-        return city.toLowerCase();
+    var formatCity = city.charAt(0).toUpperCase() + city.slice(1).toLowerCase()
+        var lowerCased = history.map(function (formatCity) {
+        return formatCity.toLowerCase();
     })
-    if (!lowerCased.includes(city)) {
-        history.push(city);
+    if (!lowerCased.includes(formatCity)) {
+        history.push(formatCity);
         localStorage.setItem('search-history', JSON.stringify(history));
         searchHistoryOutput();
 
